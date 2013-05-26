@@ -8,8 +8,6 @@
   },
   "dependencies": {
     "express": "3.2.5",
-	"socket": "0.9.14",
-	"node": "0.10.6",
-	"npm": "1.2.18"
+	"socket": "0.9.14"
   }
 }
