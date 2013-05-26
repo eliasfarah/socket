@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script> 
+		<script src="/socket.io/socket.io.js"></script>
+		<script>
+			var socket = io.connect('http://localhost:8080');
+			socket.on('connected', function (data) {
+				console.log("Yes, I'm on");
+				socket.on('say my name', function (data) {
+					say_my_name(data);
+				});
+			});
+		
+			$(document).ready(function(){
+				$('#broadcast').click(function(e){
+					e.preventDefault();
+					say_my_name({'my_name': $('#name').val() });
+					socket.emit('say my name', {'my_name': $('#name').val() });
+				});	
+			});
+			
+			function say_my_name(data) {
+				$('#names').prepend(data.my_name+'<br />');
+			};
+		</script>
+	</head>
+	<body>
+		<input type="text" name="name" id="name" />
+		<input type="button" name="broadcast" id="broadcast" value="broadcast" />
+		
+		<div id="names"></div>
+	</body>
+</html>
