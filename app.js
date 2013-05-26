@@ -15,7 +15,7 @@ io.sockets.on('connection', function (socket) {
 	});
 });
 
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 8080;
 server.listen(port, function() {
   console.log("Listening on " + port);
 });

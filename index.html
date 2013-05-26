@@ -5,7 +5,8 @@
 		<script>
 			var socket = io.connect(); //When localhost use the full adress ex.: http://localhost:3000
 			socket.on('connected', function (data) {
-				console.log("Yes, I'm on");
+				$('#status_connect').css({color:'green'});
+				$('#status_connect').html("Type your name e send it!");
 				socket.on('say my name', function (data) {
 					say_my_name(data);
 				});
@@ -25,6 +26,7 @@
 		</script>
 	</head>
 	<body>
+		<div id="status_connect" style="color:red;">Wait for connect'</div>
 		<input type="text" name="name" id="name" />
 		<input type="button" name="broadcast" id="broadcast" value="broadcast" />
 		
